@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	overflow: hidden;
+}
+
+.transparent-scrollbar {
+	scrollbar-color: grey #00000000;
+}
+
+@keyframes fadeInZoomRight {
+	0% {
+		opacity: 0;
+		transform: translateX(25%) scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0) scale(1);
+	}
+}
+
+.send-button {
+	animation: fadeInZoomRight 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@keyframes showSettings {
+	0% {
+		/* opacity: 0; */
+		transform: translateX(100%);
+	}
+	100% {
+		/* opacity: 1; */
+		transform: translateX(0);
+	}
+}
+@keyframes hideSettings {
+	0% {
+		/* opacity: 0; */
+		transform: translateX(-100%);
+	}
+	100% {
+		/* opacity: 1; */
+		transform: translateX(0);
+	}
+}
+
+.send-button-visible {
+	animation: showSettings 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95); /* Adjust the value based on your layout */
+}
+
+.send-button-hidden {
+	animation: hideSettings 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.suggestion-card {
+	opacity: 0;
+	animation: fadeInUp 0.25s ease-out forwards;
+}
+
+.suggestion-card:nth-child(1) {
+	animation-delay: 0.1s;
+}
+
+.suggestion-card:nth-child(2) {
+	animation-delay: 0.2s;
+}
+
+.suggestion-card:nth-child(3) {
+	animation-delay: 0.3s;
+}
+
+.suggestion-card:nth-child(4) {
+	animation-delay: 0.4s;
+}
