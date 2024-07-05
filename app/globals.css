@@ -85,3 +85,105 @@ body {
 .suggestion-card:nth-child(4) {
 	animation-delay: 0.4s;
 }
+
+/* The slider itself */
+.formality-slider {
+	-webkit-appearance: none; /* Override default CSS styles */
+	appearance: none;
+	width: 100%; /* Full-width */
+	height: 40px; /* Specified height */
+	border-radius: 10000px;
+	background: #e7f0fe; /* Grey background */
+	outline: none; /* Remove outline */
+	-webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+	transition: opacity 0.2s;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.formality-slider::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	width: 30px; /* Set a specific slider handle width */
+	height: 30px; /* Slider handle height */
+	border-radius: 100%;
+	background: #1c73e8; /* Green background */
+	cursor: pointer; /* Cursor on hover */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.formality-slider-inactive::-webkit-slider-thumb {
+	cursor: default !important; /* Cursor on hover */
+}
+
+.tooltip {
+	visibility: hidden;
+}
+
+.icon:hover + .tooltip {
+	visibility: visible;
+}
+
+.stop-spin {
+	animation-iteration-count: 1;
+}
+
+.sidebar-button-active:hover div {
+	@apply font-semibold;
+}
+.sidebar-button:hover div {
+	@apply bg-surface-container-hover font-semibold;
+}
+
+.spinAnimation {
+	animation-fill-mode: forwards;
+}
+
+.dot-flashing {
+	position: relative;
+	width: 8px;
+	height: 8px;
+	border-radius: 5px;
+	background-color: #a6a6a6;
+	color: #a6a6a6;
+	animation: dot-flashing 1s infinite linear alternate;
+	animation-delay: 0.5s;
+	transition: opacity 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.dot-flashing::before,
+.dot-flashing::after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 0;
+}
+.dot-flashing::before {
+	left: -12px;
+	width: 8px;
+	height: 8px;
+	border-radius: 5px;
+	background-color: #a6a6a6;
+	color: #a6a6a6;
+	animation: dot-flashing 1s infinite alternate;
+	animation-delay: 0s;
+}
+.dot-flashing::after {
+	left: 12px;
+	width: 8px;
+	height: 8px;
+	border-radius: 5px;
+	background-color: #a6a6a6;
+	color: #a6a6a6;
+	animation: dot-flashing 1s infinite alternate;
+	animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+	0% {
+		background-color: #a6a6a6;
+	}
+	100% {
+		background-color: #a6a6a65f;
+	}
+}
