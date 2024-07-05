@@ -1,8 +1,11 @@
 import Image from "next/image";
 
-function SuggestionCard({ text, icon }) {
+function SuggestionCard({ text, icon, onClick }) {
 	return (
-		<button className="bg-secondary-container h-[20vh] p-4 flex flex-col justify-between items-end rounded-xl basis-[calc(50%-4px)] hover:bg-secondary-container-hover transition-colors duration-75 suggestion-card">
+		<button
+			className="bg-secondary-container h-[20vh] p-4 flex flex-col justify-between items-end rounded-xl basis-[calc(50%-4px)] hover:bg-secondary-container-hover transition-colors duration-75 suggestion-card"
+			onClick={() => onClick(text)}
+		>
 			<span className="text-left">{text}</span>
 			<div className="material-symbols-outlined text-[#1F1F1F] bg-white p-3 rounded-full">
 				{icon}
@@ -11,7 +14,7 @@ function SuggestionCard({ text, icon }) {
 	);
 }
 
-export default function EmptyView() {
+export default function EmptyView({ setInput }) {
 	return (
 		<div className="grow flex flex-col items-center justify-center w-full gap-4 p-4">
 			<Image
@@ -30,18 +33,22 @@ export default function EmptyView() {
 				<SuggestionCard
 					text="An engaging script for a YouTube video on productivity tips."
 					icon="videocam"
+					onClick={setInput}
 				/>
 				<SuggestionCard
 					text="A persuasive email pitching a new product to potential investors."
 					icon="mail"
+					onClick={setInput}
 				/>
 				<SuggestionCard
 					text="An attention-grabbing social media post announcing an upcoming event."
 					icon="event"
+					onClick={setInput}
 				/>
 				<SuggestionCard
 					text="A creative essay about the impact of technology on modern society."
 					icon="draw"
+					onClick={setInput}
 				/>
 			</div>
 		</div>

@@ -1,8 +1,7 @@
 import TextareaAutosize from "react-textarea-autosize";
 import { useState, useRef, useEffect } from "react";
 
-export default function Input() {
-	const [content, setContent] = useState("");
+export default function Input({ onChange, value, onSubmit }) {
 	const [fullMode, setFullMode] = useState(false);
 	const [lines, setLines] = useState(1);
 	const [isMounted, setIsMounted] = useState(false);
@@ -41,7 +40,7 @@ export default function Input() {
 	useDidUpdateEffect(() => {
 		handleResize();
 		setIsMounted(true);
-	}, [content]);
+	}, [value]);
 
 	useEffect(() => {
 		window.addEventListener("resize", handleResize);
@@ -60,21 +59,29 @@ export default function Input() {
 			>
 				<div className="w-full flex flex-grow">
 					<TextareaAutosize
-						className={`resize-none bg-transparent focus:outline-none transparent-scrollbar grow m-5 mx-4 w-full ${
+						defaultValue="school essay about dogs"
+						className={`resize-none bg-transparent focus:outline-none transparent-scrollbar grow m-5 w-full ${
 							fullMode ? "mb-0" : ""
 						}`}
 						maxRows={10}
 						rows={1}
 						placeholder="Chat with Graphite..."
-						onChange={(e) => setContent(e.target.value)}
+						onChange={(e) => onChange(e.target.value)}
 						onHeightChange={(height, { rowHeight }) =>
 							setLines(height / rowHeight)
 						}
-						value={content}
+						value={value}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" && !e.shiftKey) {
+								e.preventDefault();
+								onSubmit();
+								return false;
+							}
+						}}
 						autoFocus
 					/>
 					<div ref={divRef} className="absolute whitespace-nowrap invisible">
-						{content}
+						{value}
 					</div>
 				</div>
 				<div
@@ -84,17 +91,16 @@ export default function Input() {
 				>
 					<span className="grow m-5 mx-4 w-full" ref={textareaRef}></span>
 					<button
-						className={`bg-transparent rounded-full flex justify-center items-center mr-1 hover:bg-secondary-container-hover active:bg-secondary transition-colors pointer-events-auto p-3 settings-button ${
-							content
-								? "send-button-visible"
-								: isMounted && "send-button-hidden"
+						className={`bg-transparent rounded-full flex justify-center items-center mr-2 hover:bg-secondary-container-hover active:bg-secondary transition-colors pointer-events-auto p-3 settings-button ${
+							value ? "send-button-visible" : isMounted && "send-button-hidden"
 						}`}
 					>
 						<span className="material-symbols-outlined">settings</span>
 					</button>
-					{content && (
+					{value && (
 						<button
 							className={`bg-transparent rounded-full flex justify-center items-center mr-2 hover:bg-secondary-container-hover active:bg-secondary transition-colors pointer-events-auto p-3 send-button`}
+							onClick={onSubmit}
 						>
 							<span className="material-symbols-outlined">send</span>
 						</button>
