@@ -43,7 +43,7 @@ ${mainText}
 
 The writer will now tell you what the text they are working on is ABOUT.
 
-Based on this information, you MUST REPLY to the writer, THEN YOU MUST USE the setMemory tool to set the ALL of the following: formality, summary, audience, and intent.`;
+Based on this information, you MUST REPLY to the writer, Then you MUST USE the setMemory tool to set the formality, summary, audience, AND intents. If there is NOT ENOUGH INFO, you must GUESS THE BEST YOU CAN, but STILL RUN THE TOOLCALL.`;
 
 export const CHAT_NORMAL = (
 	memory,
