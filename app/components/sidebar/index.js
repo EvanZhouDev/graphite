@@ -50,6 +50,7 @@ export default function Sidebar() {
 					width={30}
 					height={30}
 					className={`mt-3 dark:invert`}
+					alt="Graphite Logo"
 				/>
 				<SidebarTab
 					icon="edit"
@@ -64,6 +65,18 @@ export default function Sidebar() {
 					selected={pathname === "/library"}
 				/>
 				<SidebarTab
+					icon="help"
+					title="Help"
+					href="/help"
+					selected={pathname === "/help"}
+				/>
+				<SidebarTab
+					icon="key"
+					title="API Key"
+					href="/apikey"
+					selected={pathname === "/apikey"}
+				/>
+				{/* <SidebarTab
 					icon="code"
 					title="GitHub"
 					href="https://github.com/EvanZhouDev/graphite"
@@ -72,7 +85,7 @@ export default function Sidebar() {
 					icon="info"
 					title="About"
 					href="https://github.com/EvanZhouDev/graphite"
-				/>
+				/> */}
 				{/* <SidebarTab
 					icon="bomb"
 					title="Killswitch"
@@ -84,20 +97,6 @@ export default function Sidebar() {
 			</div>
 			<div>
 				<ThemeToggle />
-				{/* <button
-					className={`material-symbols-outlined text-[30px] mb-3`}
-					onClick={() => {
-						// User actions to explicitly choose themes
-						function toggleTheme(isDark) {
-							localStorage.theme = isDark ? "dark" : "light"; // Save preference
-							document.documentElement.classList.toggle("dark", isDark);
-						}
-
-						toggleTheme();
-					}}
-				>
-					dark_mode
-				</button> */}
 			</div>
 		</div>
 	);
