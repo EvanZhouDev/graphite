@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: "class",
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,17 +9,18 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				surface: "#FFF",
-				"surface-container": "#F8FAFD",
-				"surface-container-hover": "#EBEFF5",
-				primary: "#1C73E8",
-				"primary-container": "#F4F6FC",
-				secondary: "#D2E3FC",
-				"secondary-container": "#F0F4F8",
-				"secondary-container-hover": "#DDE3EA",
-				tertiary: "#E7F0FE",
+				surface: "var(--surface)",
+				"surface-container": "var(--surface-container)",
+				"surface-container-hover": "var(--surface-container-hover)",
+				primary: "var(--primary)",
+				"primary-container": "var(--primary-container)",
+				"primary-container-hover": "var(--primary-container-hover)",
+				secondary: "var(--secondary)",
+				"secondary-container": "var(--secondary-container)",
+				"secondary-container-hover": "var(--secondary-container-hover)",
+				tertiary: "var(--tertiary)",
 				dim: "#A6A6A6",
-				accent: "#CBF0F8",
+				accent: "var(--accent)",
 			},
 		},
 	},

@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--surface: white;
+	--surface-container: #f8fafd;
+	--surface-container-hover: #ebeff5;
+	--primary: #1c73e8;
+	--primary-container: #f4f6fc;
+	--primary-container-hover: #e9eef6;
+	--secondary: #d2e3fc;
+	--secondary-container: #f0f4f8;
+	--secondary-container-hover: #dde3ea;
+	--tertiary: #e7f0fe;
+	--accent: #cbf0f8;
+
+	color: black;
+}
+
+.dark {
+	--surface: #202124;
+	--surface-container: #28292a;
+	--surface-container-hover: #3c3d41;
+	--primary: #8ab4f7;
+	--primary-container: #2d2e30;
+	--primary-container-hover: #282a2c;
+	--secondary: #164ea6;
+	--secondary-container: #1e1f20;
+	--secondary-container-hover: #333537;
+	--tertiary: #3c4043;
+	--accent: #4b737b;
+
+	color: white;
+}
+
 body {
 	overflow: hidden;
 }
@@ -93,7 +125,7 @@ body {
 	width: 100%; /* Full-width */
 	height: 40px; /* Specified height */
 	border-radius: 10000px;
-	background: #e7f0fe; /* Grey background */
+	background: var(--tertiary); /* Grey background */
 	outline: none; /* Remove outline */
 	-webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
 	transition: opacity 0.2s;
@@ -108,7 +140,7 @@ body {
 	width: 30px; /* Set a specific slider handle width */
 	height: 30px; /* Slider handle height */
 	border-radius: 100%;
-	background: #1c73e8; /* Green background */
+	background: var(--primary); /* Green background */
 	cursor: pointer; /* Cursor on hover */
 }
 
@@ -186,4 +218,30 @@ body {
 	100% {
 		background-color: #a6a6a65f;
 	}
+}
+
+.scroll-fadeout {
+	-webkit-mask: linear-gradient(to bottom, transparent, #000) 0 100% /
+			calc(100%),
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: destination-out;
+	mask-composite: exclude;
+	-webkit-mask-repeat: no-repeat;
+}
+
+.scroll-fadeout-no-scrollbar {
+	-webkit-mask: linear-gradient(to bottom, transparent, #000) 0 100% /
+			calc(100% - 42px) 42px,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: destination-out;
+	mask-composite: exclude;
+	-webkit-mask-repeat: no-repeat;
+}
+
+.file-list-container:hover .file-list-description {
+	background-color: theme("colors.surface-container-hover");
+}
+
+.white-logo {
+	filter: brightness(0) invert(1);
 }
