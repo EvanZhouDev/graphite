@@ -23,6 +23,8 @@ export default function AddButton({ onSubmit }) {
 			if (inputValue) onSubmit(inputValue);
 			setIsExpanded(false);
 			setInputValue("");
+		} else if (e.key === " ") {
+			e.stopPropagation();
 		}
 	};
 
@@ -30,12 +32,12 @@ export default function AddButton({ onSubmit }) {
 		setTimeout(() => {
 			setIsExpanded(false);
 			setInputValue("");
-		}, 100);
+		}, 200);
 	};
 
 	return (
-		<button
-			className={`bg-tertiary p-2 rounded-xl font-medium m-1 flex items-center justify-center`}
+		<div
+			className={`bg-tertiary p-2 rounded-xl font-medium m-1 flex items-center justify-center cursor-pointer`}
 			onClick={handleButtonClick}
 		>
 			<span className="material-symbols-outlined text-[20px]">add</span>
@@ -50,6 +52,6 @@ export default function AddButton({ onSubmit }) {
 					autoFocus
 				/>
 			)}
-		</button>
+		</div>
 	);
 }
