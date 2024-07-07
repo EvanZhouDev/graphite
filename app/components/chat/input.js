@@ -59,7 +59,6 @@ export default function Input({ onChange, value, onSubmit }) {
 			>
 				<div className="w-full flex flex-grow">
 					<TextareaAutosize
-						defaultValue="school essay about dogs"
 						className={`resize-none bg-transparent focus:outline-none transparent-scrollbar grow m-5 w-full ${
 							fullMode ? "mb-0" : ""
 						}`}
