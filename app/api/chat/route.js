@@ -9,10 +9,19 @@ export const maxDuration = 30;
 export async function POST(req) {
 	const { messages } = await req.json();
 
+	process.env.GOOGLE_GENERATIVE_AI_API_KEY = messages
+		.at(-2)
+		.content.split("\n")
+		.at(-1);
+
 	const result = await streamText({
 		model: google("models/gemini-1.5-pro-latest"),
 		messages: messages.flatMap((x) => {
-			if (x.role === "system") return { role: "system", content: x.content };
+			if (x.role === "system")
+				return {
+					role: "system",
+					content: x.content.split("\n").slice(0, -1).join("\n"),
+				};
 			return convertToCoreMessages([x]);
 		}),
 		tools: {
