@@ -141,15 +141,7 @@ export default function FileTile({ file, idx }) {
 								className="py-2 text-[15px] hover:bg-primary-container-hover font-medium flex items-center px-2 pr-4 w-full text-left rounded-b-xl"
 								onClick={(e) => {
 									e.stopPropagation();
-									setStorage((storage) => {
-										return {
-											currentFile:
-												storage.currentFile === storage.files.length - 1
-													? storage.files.length - 2
-													: storage.currentFile,
-											files: storage.files.filter((_, i) => i !== idx),
-										};
-									});
+									setCurrentFile(idx);
 									toggleDropdown(e);
 								}}
 							>
