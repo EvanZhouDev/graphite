@@ -7,7 +7,7 @@ function SuggestionCard({ text, icon, onClick }) {
 			onClick={() => onClick(text)}
 		>
 			<span className="text-left">{text}</span>
-			<div className="material-symbols-outlined text-[#1F1F1F] bg-white p-3 rounded-full">
+			<div className="material-symbols-outlined bg-surface p-3 rounded-full">
 				{icon}
 			</div>
 		</button>

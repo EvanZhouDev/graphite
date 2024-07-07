@@ -57,7 +57,7 @@ export default function Messages({ isLoading }) {
 
 	return (
 		<div
-			className="flex-grow p-2 overflow-y-auto mb-3 transparent-scrollbar scroll-fadeout"
+			className="flex-grow p-2 overflow-y-auto mb-3 transparent-scrollbar scroll-fadeout-no-scrollbar"
 			ref={messagesEndRef}
 		>
 			{messages.map((message, i) => {
@@ -129,7 +129,7 @@ export default function Messages({ isLoading }) {
 			<div
 				className={`dot-flashing ml-[22px] ${
 					isLoading ? "opacity-100" : "opacity-0"
-				}`}
+				} mb-4`}
 			/>
 		</div>
 	);

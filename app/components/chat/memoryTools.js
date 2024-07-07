@@ -9,7 +9,7 @@ function ToolLabel({ icon, label, tooltip }) {
 				{icon}
 			</span>
 			{tooltip && (
-				<div className="absolute tooltip left-7 bg-tertiary p-3 rounded-xl text-black font-normal border-dim border-[0.5px] mb-1">
+				<div className="absolute tooltip left-7 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] mb-1">
 					{tooltip}
 				</div>
 			)}
