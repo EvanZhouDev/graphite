@@ -5,14 +5,7 @@ import Editor from "@/components/editor";
 import { FileProvider } from "./providers/file.js";
 import { PreviewSuggestionProvider } from "./providers/previewSuggestion.js";
 import React from "react";
-import { useIsClient } from "@uidotdev/usehooks";
-
-export const ClientOnly = ({ children }) => {
-	const isClient = useIsClient();
-
-	// Render children if on client side, otherwise return null
-	return isClient ? <>{children}</> : null;
-};
+import ClientOnly from "./components/clientOnly.js";
 
 export default function Home() {
 	return (
