@@ -14,7 +14,6 @@ export default function FileList() {
 	const fuse = new Fuse(storage.files, {
 		keys: ["title", "content"],
 	});
-	console.log(fuse.search(search));
 
 	const calculateAndSetInvisibleItems = () => {
 		if (containerRef.current) {
@@ -57,12 +56,17 @@ export default function FileList() {
 				<div className="flex items-center ml-2 w-[20vw]">
 					<h1 className="font-semibold text-3xl">File Library</h1>
 				</div>
-				<input
-					placeholder="Search library..."
-					className={`bg-surface-container-hover flex-grow flex justify-stretch items-center z-50 flex-col relative rounded-full max-w-[40vw] h-12 px-4 focus:outline-none focus:bg-surface transition-colors`}
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
+				<div className="bg-surface-container-hover flex-grow flex justify-stretch items-center z-50 flex-row relative rounded-full w-[40vw] h-12 transition-colors focus-within:bg-surface">
+					<span className="material-symbols-outlined text-dim text-2xl ml-3">
+						search
+					</span>
+					<input
+						placeholder="Search library..."
+						className={`bg-transparent focus:outline-none w-[40vw] h-12 px-4 pl-2`}
+						value={search}
+						onChange={(e) => setSearch(e.target.value)}
+					/>
+				</div>
 				<div className="flex items-center w-[20vw] justify-end">
 					<h1 className="font-light text-dim mr-2 text-right">
 						{storage.files.length} Files Total
@@ -89,10 +93,15 @@ export default function FileList() {
 									files: [
 										...storage.files,
 										{
-											title: "Untitled",
+											title: "Untitled File",
 											content: "",
 											messages: [],
-											memory: {},
+											memory: {
+												formality: 0,
+												audience: [],
+												intent: [],
+												summary: "",
+											},
 											toolHistory: [],
 										},
 									],

@@ -6,14 +6,20 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 export const FileContext = createContext();
 
 export function FileProvider({ children }) {
-	const [storage, setStorage] = useLocalStorage("graphite", {
+	const [storage, setStorage] = useLocalStorage("graphite-storage", {
 		currentFile: 0,
+		apiKey: "",
 		files: [
 			{
 				title: "Untitled File",
 				content: "",
 				messages: [],
-				memory: {},
+				memory: {
+					formality: 0,
+					audience: [],
+					intent: [],
+					summary: "",
+				},
 				toolHistory: [],
 			},
 		],
