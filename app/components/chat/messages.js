@@ -22,7 +22,7 @@ function UserMessage({ text }) {
 	return <Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>;
 }
 
-function GraphiteMessage({ text, tools, active, isLoading }) {
+function GraphiteMessage({ text, tools, active }) {
 	return (
 		<>
 			<Markdown remarkPlugins={[remarkGfm]}>{text}</Markdown>
@@ -86,6 +86,7 @@ export default function Messages({ isLoading }) {
 										height="100"
 										className="w-7 p-[2px]"
 										priority
+										alt="Graphite Logo"
 									/>
 								}
 								title="Graphite"
@@ -118,6 +119,7 @@ export default function Messages({ isLoading }) {
 										height="100"
 										className="w-7 p-[2px]"
 										priority
+										alt="Graphite Logo"
 									/>
 								}
 								title="Graphite"

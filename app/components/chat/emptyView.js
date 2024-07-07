@@ -23,6 +23,7 @@ export default function EmptyView({ setInput }) {
 				height="100"
 				priority
 				className="w-[13vh]"
+				alt="Graphite Logo"
 			/>
 			<div className="font-semibold text-3xl">Graphite Chat</div>
 			<div className="text-dim text-center">
