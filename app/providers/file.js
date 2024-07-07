@@ -10,7 +10,7 @@ export function FileProvider({ children }) {
 		currentFile: 0,
 		files: [
 			{
-				title: "New File",
+				title: "Untitled File",
 				content: "",
 				messages: [],
 				memory: {},
@@ -57,6 +57,8 @@ export function FileProvider({ children }) {
 
 		// ! IMPORTANT: All setAttributes rely on setStorage under the hood, which means calling multiple setAttributes together will ONLY CAUSE 1 TO WORK. If you need to call multiple setAttributes, you should use setFile instead.
 		return {
+			storage,
+			setStorage,
 			file,
 			setFile,
 			setCurrentFile,
