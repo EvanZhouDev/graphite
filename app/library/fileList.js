@@ -119,6 +119,7 @@ export default function FileList() {
 						(file, idx) => {
 							return (
 								<FileTile
+									key={idx}
 									file={search.length ? file.item : file}
 									idx={search.length ? file.refIndex : idx}
 								/>

@@ -202,6 +202,7 @@ export default function SuggestionTools({ tool }) {
 
 				return (
 					<Suggestion
+						key={i}
 						icon={icon}
 						title={title}
 						onAccept={onAccept}

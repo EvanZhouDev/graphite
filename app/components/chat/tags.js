@@ -8,8 +8,8 @@ export default function Tags({ tags, attributeName }) {
 	return (
 		<>
 			<div className="flex flex-wrap -ml-1 mb-3">
-				{tags.map((tag) => (
-					<span className="bg-tertiary p-2 rounded-xl font-medium m-1 flex items-center">
+				{tags.map((tag, i) => (
+					<span className="bg-tertiary p-2 rounded-xl font-medium m-1 flex items-center" key={i}>
 						{tag}
 						<button
 							className="flex items-center justify-center"

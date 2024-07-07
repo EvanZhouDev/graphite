@@ -30,12 +30,12 @@ function GraphiteMessage({ text, tools, active }) {
 				if (toolInvocation.toolName === "setMemory") {
 					return (
 						<>
-							<MemoryTools tool={tools[i]} active={active} />
+							<MemoryTools key={i} tool={tools[i]} active={active} />
 						</>
 					);
 				}
 				if (toolInvocation.toolName === "giveSuggestions") {
-					return <SuggestionTools tool={tools[i]} />;
+					return <SuggestionTools key={i} tool={tools[i]} />;
 				}
 			})}
 		</>
@@ -63,7 +63,7 @@ export default function Messages({ isLoading }) {
 			{messages.map((message, i) => {
 				if (message.role === "user") {
 					return (
-						<div className="m-2 mb-5">
+						<div key={i} className="m-2 mb-5">
 							<MessageHeader
 								icon={
 									<span class="material-symbols-outlined text-xl w-7 h-7 outline outline-[#EDEDED] outline-[1px] flex items-center justify-center rounded-full p-1">
@@ -77,7 +77,7 @@ export default function Messages({ isLoading }) {
 					);
 				} else if (message.role == "assistant") {
 					return (
-						<div className="m-2 mb-5">
+						<div key={i} className="m-2 mb-5">
 							<MessageHeader
 								icon={
 									<Image

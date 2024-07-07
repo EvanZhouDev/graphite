@@ -27,7 +27,7 @@ export default function EmptyView({ setInput }) {
 			/>
 			<div className="font-semibold text-3xl">Graphite Chat</div>
 			<div className="text-dim text-center">
-				Tell Graphite about what you're going to write and what you want to
+				Tell Graphite about what you&apos;re going to write and what you want to
 				achieve to start customizing your writing experience.
 			</div>
 			<div className="flex flex-wrap justify-center gap-2">
