@@ -25,11 +25,24 @@ DO NOT give MULTIPLE EDITS for the same text OR OVERLAPPING EDITS.
 ALWAYS give suggestions with THIS TOOLCALL. Never DIRECTLY SAY YOUR SUGGESTION.`;
 
 export const CHAT_INITIAL = (
+	memory,
 	mainText
 ) => `You are a WRITING INSTRUCTOR, working WITH a writer on a piece of text.
 You are SUPPORTIVE and HELPFUL.
 
 You are CONCISE but CLEAR.
+
+${
+	(memory.formality != 0 ||
+		memory.summary != "" ||
+		memory.audience.length > 0 ||
+		memory.intent.length > 0) &&
+	"Here is an overview of what you should know about the writer's text:"
+}
+${memory.formality && `Formality: ${memory.formality} (In a range of 1-5)`}
+${memory.summary && `Summary: ${memory.summary}`}
+${memory.audience && `Audience: ${memory.audience.join(", ")}`}
+${memory.intent && `Intents: ${memory.intent.join(", ")}`}
 
 ${
 	mainText
