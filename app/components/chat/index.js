@@ -13,6 +13,7 @@ export default function Chat() {
 		setFile,
 		setMessages: setFileMessages,
 		setToolHistory,
+		storage,
 	} = useContext(FileContext);
 	let { memory, content } = file;
 
@@ -21,7 +22,7 @@ export default function Chat() {
 	const { messages, input, setInput, setMessages, handleSubmit, isLoading } =
 		useChat({
 			maxToolRoundtrips: 0,
-			initialMessages: file.messages,
+			initialMessages: [...file.messages],
 			async onToolCall({ toolCall }) {
 				if (toolCall.toolName === "setMemory") {
 					setFile((file) => ({
@@ -128,7 +129,7 @@ export default function Chat() {
 						setMessages([
 							{
 								role: "system",
-								content: CHAT_INITIAL(content),
+								content: CHAT_INITIAL(memory, content) + `\n${storage.apiKey}`,
 							},
 							...messages,
 						]);
@@ -137,7 +138,7 @@ export default function Chat() {
 							...messages,
 							{
 								role: "system",
-								content: CHAT_NORMAL(memory, content),
+								content: CHAT_NORMAL(memory, content) + `\n${storage.apiKey}`,
 							},
 						]);
 					}
