@@ -7,6 +7,8 @@
 	--surface-container: #f8fafd;
 	--surface-container-hover: #ebeff5;
 	--primary: #1c73e8;
+	--primary-hover: #1f65c9;
+	--primary-active: #2258ab;
 	--primary-container: #f4f6fc;
 	--primary-container-hover: #e9eef6;
 	--secondary: #d2e3fc;
@@ -23,6 +25,8 @@
 	--surface-container: #28292a;
 	--surface-container-hover: #3c3d41;
 	--primary: #8ab4f7;
+	--primary-hover: #99bcf6;
+	--primary-active: #a2c1f5;
 	--primary-container: #2d2e30;
 	--primary-container-hover: #282a2c;
 	--secondary: #164ea6;

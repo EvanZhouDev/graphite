@@ -13,6 +13,8 @@ module.exports = {
 				"surface-container": "var(--surface-container)",
 				"surface-container-hover": "var(--surface-container-hover)",
 				primary: "var(--primary)",
+				"primary-hover": "var(--primary-hover)",
+				"primary-active": "var(--primary-active)",
 				"primary-container": "var(--primary-container)",
 				"primary-container-hover": "var(--primary-container-hover)",
 				secondary: "var(--secondary)",
