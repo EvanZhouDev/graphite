@@ -101,7 +101,7 @@ function APIKeyInterface() {
 										href="https://aistudio.google.com/app/apikey"
 										className="underline"
 									>
-										Google AI Studio's API Key tab
+										Google AI Studio&apos;s API Key tab
 									</a>
 								</b>
 							</div>
