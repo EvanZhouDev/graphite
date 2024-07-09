@@ -12,7 +12,7 @@ export default function Editor() {
 		<div className="flex flex-col justify-stretch h-full">
 			{storage.files.length === 0 ? (
 				<div className="w-full h-full flex items-center justify-center flex-col">
-					<span class="material-symbols-outlined text-dim text-[150px] mb-5">
+					<span class="material-symbols-outlined text-dim !text-[150px] mb-5">
 						indeterminate_question_box
 					</span>
 					<div className="text-3xl font-medium">No Files to Edit</div>
