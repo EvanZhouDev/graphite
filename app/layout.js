@@ -3,6 +3,7 @@ import "material-symbols";
 import "./globals.css";
 import Sidebar from "@/components/sidebar/";
 import ThemeProvider from "./providers/theme.js";
+import OnboardingRouter from "./onboardingRouter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={inter.className}>
+				<OnboardingRouter />
 				<ThemeProvider>
 					<div className="bg-surface-container flex w-screen h-screen gap-3 p-3">
 						<Sidebar />
