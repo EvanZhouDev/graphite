@@ -16,29 +16,7 @@ export default function Chat() {
 		storage,
 	} = useContext(FileContext);
 
-	if (storage.files.length == 0) {
-		return (
-			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
-				<EmptyView setInput={() => {}} />
-				<div className="mb-12 font-medium">
-					Create a file to use Graphite Chat.
-				</div>
-			</div>
-		);
-	}
-
-	let { memory, content } = file;
-
-	if (storage.apiKey == "" || storage.apiKey == undefined) {
-		return (
-			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
-				<EmptyView setInput={() => {}} />
-				<div className="mb-12 font-medium">
-					Set your API Key in the API Key tab to use Graphite Chat.
-				</div>
-			</div>
-		);
-	}
+	let { memory, content } = file ?? { memory: undefined, content: undefined };
 
 	let objectEquals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -52,7 +30,7 @@ export default function Chat() {
 		isLoading,
 	} = useChat({
 		maxToolRoundtrips: 0,
-		initialMessages: [...file.messages],
+		initialMessages: file && [...file.messages],
 		async onToolCall({ toolCall }) {
 			if (toolCall.toolName === "setMemory") {
 				setFile((file) => ({
@@ -126,8 +104,8 @@ export default function Chat() {
 
 	useEffect(() => {
 		if (
-			file.toolHistory.length > 0 &&
-			file.toolHistory.at(-1).toolName === "setMemory"
+			file?.toolHistory.length > 0 &&
+			file?.toolHistory.at(-1).toolName === "setMemory"
 		) {
 			setToolHistory((x) => {
 				let newMemory = structuredClone(x);
@@ -141,9 +119,31 @@ export default function Chat() {
 		}
 	}, [memory]);
 
+	if (storage.files.length == 0) {
+		return (
+			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
+				<EmptyView setInput={() => {}} />
+				<div className="mb-12 font-medium">
+					Create a file to use Graphite Chat.
+				</div>
+			</div>
+		);
+	}
+
+	if (storage.apiKey == "" || storage.apiKey == undefined) {
+		return (
+			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
+				<EmptyView setInput={() => {}} />
+				<div className="mb-12 font-medium">
+					Set your API Key in the API Key tab to use Graphite Chat.
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className="flex flex-col justify-stretch h-full">
-			{file.messages.length ? (
+			{file?.messages.length ? (
 				<>
 					<Messages isLoading={isLoading} />
 				</>
