@@ -71,7 +71,7 @@ function Suggestion({
 
 	return (
 		<div
-			className={`bg-[#F2F6FC] rounded-xl flex flex-col p-3 gap-3 my-2`}
+			className={`bg-tertiary rounded-xl flex flex-col p-3 gap-3 my-2`}
 			onMouseEnter={() =>
 				!suggestion.dismissed &&
 				!suggestion.accepted &&
@@ -83,7 +83,7 @@ function Suggestion({
 			}
 			onMouseLeave={() => setPreviewSuggestion({})}
 		>
-			<span className="text-[#A6A6A6] font-light flex items-center">
+			<span className="text-dim font-light flex items-center">
 				<span class="material-symbols-outlined font-light mr-1">{icon}</span>
 				{title}
 			</span>
@@ -93,7 +93,7 @@ function Suggestion({
 			</div>
 			<div>
 				<button
-					className="bg-[#1C73E8] text-white rounded-full py-1 px-3"
+					className="bg-primary text-white dark:text-black rounded-full py-1 px-3"
 					onClick={() => {
 						setFile((f) => {
 							let file = structuredClone(f);
