@@ -17,7 +17,7 @@ export default function EditorBody() {
 			return (
 				<>
 					{beforeAnchor}
-					<mark className="bg-secondary text-primary p-1 rounded font-medium whitespace-pre-line">
+					<mark className="bg-secondary text-primary dark:text-primary-active p-1 rounded font-medium whitespace-pre-line">
 						{activeChange.text}
 					</mark>
 					{afterAnchor}
