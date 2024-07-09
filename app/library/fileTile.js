@@ -121,6 +121,7 @@ export default function FileTile({ file, idx }) {
 									e.stopPropagation();
 									setStorage((storage) => {
 										return {
+											...storage,
 											currentFile:
 												storage.currentFile === storage.files.length - 1
 													? storage.files.length - 2

@@ -89,6 +89,7 @@ export default function FileList() {
 						onClick={() => {
 							setStorage((storage) => {
 								return {
+									...storage,
 									currentFile: storage.files.length,
 									files: [
 										...storage.files,

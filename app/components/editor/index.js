@@ -27,6 +27,7 @@ export default function Editor() {
 							onClick={() => {
 								setStorage((storage) => {
 									return {
+										...storage,
 										currentFile: storage.files.length,
 										files: [
 											...storage.files,
