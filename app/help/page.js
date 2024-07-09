@@ -490,6 +490,12 @@ function HelpMainPage({ setCurIdx }) {
 			/>
 
 			<div className="flex flex-row gap-3 mt-12">
+				<a
+					className="border-[1px] border-primary p-3 text-primary font-medium text-lg rounded-full px-4 hover:bg-surface-container active:bg-surface-container-hover transition-colors"
+					href="https://github.com/EvanZhouDev/graphite"
+				>
+					View GitHub
+				</a>
 				<button
 					className="bg-primary p-3 text-white dark:text-black font-medium text-lg rounded-full px-4 hover:bg-primary-hover active:bg-primary-active transition-colors"
 					onClick={() => {
