@@ -112,7 +112,7 @@ export default function FileList() {
 						}}
 					>
 						<span className="text-dim text-2xl mb-2">New File</span>
-						<span className="material-symbols-outlined text-dim text-6xl">
+						<span className="material-symbols-outlined text-dim !text-6xl">
 							note_add
 						</span>
 					</button>
