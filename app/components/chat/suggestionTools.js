@@ -37,7 +37,7 @@ function Suggestion({
 									error
 								</div>
 								<div className="absolute tooltip top-10 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[15vw]">
-									Graphite couldn't find the target text in your writing.
+									Graphite couldn&apos;t find the target text in your writing.
 									Graphite may have made a mistake, or your text may have
 									changed.
 								</div>
@@ -88,7 +88,7 @@ function Suggestion({
 						Invalid Suggestion
 						<div className="icon material-symbols-outlined ml-1">help</div>
 						<div className="absolute tooltip top-10 left-0 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[20vw]">
-							Graphite couldn't find the target text in your writing. Graphite
+							Graphite couldn&apos;t find the target text in your writing. Graphite
 							may have made a mistake, or your text may have changed.
 						</div>
 					</button>
