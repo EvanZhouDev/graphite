@@ -226,7 +226,7 @@ body {
 
 .scroll-fadeout {
 	-webkit-mask: linear-gradient(to bottom, transparent, #000) 0 100% /
-			calc(100%),
+			calc(100%) 42px,
 		linear-gradient(#000 0 0);
 	-webkit-mask-composite: destination-out;
 	mask-composite: exclude;
