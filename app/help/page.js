@@ -505,12 +505,12 @@ function HelpMainPage({ setCurIdx }) {
 					{!storage.apiKey ? "Start Onboarding" : "Start Tutorials"}
 				</button>
 			</div>
-			{!storage.apiKey && (
-				<p className="w-[30vw] text-center text-dim text-sm">
-					You are seeing this onboarding because you haven&apos;t yet entered a
-					Gemini API key. Follow this onboarding to get started.
-				</p>
-			)}
+
+			<p className="w-[30vw] text-center text-dim text-sm">
+				{!storage.apiKey
+					? "You are seeing this onboarding because you haven&apos;t yet entered a Gemini API key. Follow this onboarding to get started."
+					: "Visit GitHub to learn more about the tech that powers Graphite!"}
+			</p>
 		</div>
 	);
 }
@@ -532,9 +532,9 @@ function GettingStarted({ setCurIdx }) {
 				<h1 className="font-medium text-4xl my-3">That&apos;s Graphite.</h1>
 			</div>
 			<p className="w-[50vw] text-center mb-[5%]">
-				We can&apos;t wait to see what you write with Graphite. Write a fun
-				story. Work on an essay. Change the world. Graphite will always be there
-				to help you in the process.
+				We can&apos;t wait to see what you write with Graphite. Draft an email.
+				Write a book. Change the world. Graphite will always be there by your
+				side.
 			</p>
 
 			<Image
