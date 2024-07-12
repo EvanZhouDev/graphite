@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { FileContext } from "@/providers/file.js";
 import { PreviewSuggestionContext } from "@/providers/previewSuggestion";
 
 export default function EditorBody() {
 	let { file, setContent } = useContext(FileContext);
 	let [previewSuggestion] = useContext(PreviewSuggestionContext);
+	const markRef = useRef(null);
+
+	useEffect(() => {
+		if (markRef.current) {
+			markRef.current.scrollIntoView();
+		}
+	}, [previewSuggestion]);
 
 	function renderTextWithHighlight(mainText, activeChange) {
 		const anchorPosition = mainText.indexOf(activeChange.anchor);
@@ -17,7 +24,10 @@ export default function EditorBody() {
 			return (
 				<>
 					{beforeAnchor}
-					<mark className="bg-secondary text-primary dark:text-primary-active p-1 rounded font-medium whitespace-pre-line">
+					<mark
+						className="bg-secondary text-primary dark:text-primary-active p-1 rounded font-medium whitespace-pre-line"
+						ref={markRef}
+					>
 						{activeChange.text}
 					</mark>
 					{afterAnchor}
@@ -38,7 +48,10 @@ export default function EditorBody() {
 			return (
 				<>
 					{beforeAnchor}
-					<mark className="bg-[#D3E2FD] text-[#0957D0] p-1 rounded font-medium whitespace-pre-line">
+					<mark
+						className="bg-[#D3E2FD] text-[#0957D0] p-1 rounded font-medium whitespace-pre-line"
+						ref={markRef}
+					>
 						{activeChange.text.replaceAll("\\n", "").replace(/\\/g, "")}
 					</mark>
 					{afterAnchor}
@@ -55,7 +68,10 @@ export default function EditorBody() {
 			return (
 				<>
 					{beforeAnchor}
-					<mark className="bg-[#ebebeb] p-1 rounded font-medium whitespace-pre-line">
+					<mark
+						className="bg-[#ebebeb] p-1 rounded font-medium whitespace-pre-line"
+						ref={markRef}
+					>
 						<s className="text-[#A6A6A6] whitespace-pre-line">
 							{activeChange.anchor.replaceAll("\\n", "\n").replace(/\\/g, "")}
 						</s>
@@ -78,7 +94,10 @@ export default function EditorBody() {
 					<s className="text-[#A6A6A6] font-medium whitespace-pre-line">
 						{activeChange.anchor.replaceAll("\\n", "").replace(/\\/g, "")}
 					</s>{" "}
-					<mark className="bg-[#D3E2FD] text-[#0957D0] p-1 rounded font-medium whitespace-pre-line">
+					<mark
+						ref={markRef}
+						className="bg-[#D3E2FD] text-[#0957D0] p-1 rounded font-medium whitespace-pre-line"
+					>
 						{activeChange.text.replaceAll("\\n", "").replace(/\\/g, "")}
 					</mark>
 					{afterAnchor}
@@ -102,8 +121,11 @@ export default function EditorBody() {
 			/>
 			{previewSuggestion.type && (
 				<div
-					className="w-full h-full resize-none rounded-xl focus:outline-none p-3 absolute top-0 left-0 overflow-hidden pointer-events-none z-50 bg-surface text-[18px]"
-					style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+					className="w-full h-full resize-none rounded-xl focus:outline-none p-3 px-5 absolute top-0 left-0 overflow-y-auto pointer-events-none z-50 bg-surface text-[18px] transparent-scrollbar"
+					style={{
+						whiteSpace: "pre-wrap",
+						wordWrap: "break-word",
+					}}
 				>
 					{renderTextWithHighlight(file.content, previewSuggestion)}
 				</div>
