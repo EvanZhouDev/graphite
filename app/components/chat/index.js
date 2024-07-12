@@ -93,6 +93,62 @@ export default function Chat() {
 					console.log(e);
 				}
 			}
+			if (toolCall.toolName === "setMemoryAndGiveSuggestions") {
+				try {
+					setFile((file) => ({
+						...file,
+						toolHistory: [
+							...file.toolHistory,
+							{
+								...toolCall,
+								args: {
+									...toolCall.args,
+									corrections: toolCall.args.corrections.map((x) => ({
+										...x,
+										text: x.text.replaceAll("\\n", "\n").replace(/\\/g, ""),
+										anchor: x.anchor.replaceAll("\\n", "\n").replace(/\\/g, ""),
+									})),
+								},
+								updateMap: {
+									formality: toolCall.args.formality != file.memory.formality,
+									intent: !objectEquals(
+										toolCall.args.intent.map((x) =>
+											x.replaceAll("\\n", "\n").replace(/\\/g, "")
+										),
+										file.memory.intent
+									),
+									audience: !objectEquals(
+										toolCall.args.audience.map((x) =>
+											x.replaceAll("\\n", "\n").replace(/\\/g, "")
+										),
+										file.memory.audience
+									),
+									summary: !objectEquals(
+										toolCall.args.summary
+											.replaceAll("\\n", "\n")
+											.replace(/\\/g, ""),
+										file.memory.summary
+									),
+								},
+							},
+						],
+						memory: {
+							formality: toolCall.args.formality,
+							intent: structuredClone(toolCall.args.intent).map((x) =>
+								x.replaceAll("\\n", "\n").replace(/\\/g, "")
+							),
+							audience: structuredClone(toolCall.args.audience).map((x) =>
+								x.replaceAll("\\n", "\n").replace(/\\/g, "")
+							),
+							summary: toolCall.args.summary
+								.replaceAll("\\n", "\n")
+								.replace(/\\/g, ""),
+						},
+					}));
+				} catch (e) {
+					console.log(e);
+				}
+			}
 		},
 	});
 
