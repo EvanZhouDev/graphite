@@ -15,7 +15,7 @@ function Suggestion({
 }) {
 	const { explanation } = suggestion;
 
-	const { setToolHistory, setContent, setFile } = useContext(FileContext);
+	const { setToolHistory, setFile, file } = useContext(FileContext);
 	const [previewSuggestion, setPreviewSuggestion] = useContext(
 		PreviewSuggestionContext
 	);
@@ -25,9 +25,25 @@ function Suggestion({
 			<div
 				className={`bg-[#F2F6FC] rounded-xl flex flex-col p-3 gap-3 my-2 grayscale`}
 			>
-				<span className="text-[#A6A6A6] font-light flex items-center">
-					<span class="material-symbols-outlined font-light mr-1">{icon}</span>
-					{title}
+				<span className="text-[#A6A6A6] font-light flex items-center justify-between">
+					<div className="flex items-center">
+						<span class="material-symbols-outlined font-light mr-1">
+							{icon}
+						</span>
+						{title}
+						{!file.content.includes(suggestion.anchor) && (
+							<button className="bg-dim text-white dark:text-black rounded-full p-[2px] flex items-center relative ml-1">
+								<div className="icon material-symbols-outlined !text-[20px]">
+									error
+								</div>
+								<div className="absolute tooltip top-10 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[15vw]">
+									Graphite couldn't find the target text in your writing.
+									Graphite may have made a mistake, or your text may have
+									changed.
+								</div>
+							</button>
+						)}
+					</div>
 					<button
 						className="text-[#A6A6A6] ml-4"
 						onClick={() => {
@@ -47,9 +63,52 @@ function Suggestion({
 							});
 						}}
 					>
-						Reconsider Suggestion
+						Reconsider
 					</button>
 				</span>
+			</div>
+		);
+	}
+
+	if (!file.content.includes(suggestion.anchor)) {
+		return (
+			<div
+				className={`bg-tertiary rounded-xl flex flex-col p-3 gap-3 my-2 grayscale`}
+			>
+				<span className="text-dim font-light flex items-center">
+					<span class="material-symbols-outlined font-light mr-1">{icon}</span>
+					{title}
+				</span>
+				<span className="text-left font-semibold ml-1">{children}</span>
+				<div className="text-left text-sm ml-1">
+					<Markdown remarkPlugins={[remarkGfm]}>{explanation}</Markdown>
+				</div>
+				<div className="flex items-center">
+					<button className="bg-dim text-white dark:text-black rounded-full py-1 px-3 flex items-center relative">
+						Invalid Suggestion
+						<div className="icon material-symbols-outlined ml-1">help</div>
+						<div className="absolute tooltip top-10 left-0 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[20vw]">
+							Graphite couldn't find the target text in your writing. Graphite
+							may have made a mistake, or your text may have changed.
+						</div>
+					</button>
+					<button
+						className="text-dim ml-4"
+						onClick={() => {
+							setToolHistory((th) => {
+								let toolHistory = structuredClone(th);
+								for (let toolCall of toolHistory) {
+									if (toolCall.toolCallId === id) {
+										toolCall.args.corrections[suggestionIdx].dismissed = true;
+									}
+								}
+								return toolHistory;
+							});
+						}}
+					>
+						Dismiss
+					</button>
+				</div>
 			</div>
 		);
 	}
@@ -93,7 +152,7 @@ function Suggestion({
 			</div>
 			<div>
 				<button
-					className="bg-primary text-white dark:text-black rounded-full py-1 px-3"
+					className="bg-primary hover:bg-primary-hover active:bg-primary-active transition-colors text-white dark:text-black rounded-full py-1 px-3"
 					onClick={() => {
 						setFile((f) => {
 							let file = structuredClone(f);
@@ -117,6 +176,7 @@ function Suggestion({
 				<button
 					className="text-[#A6A6A6] ml-4"
 					onClick={() => {
+						setPreviewSuggestion({});
 						setToolHistory((th) => {
 							let toolHistory = structuredClone(th);
 							for (let toolCall of toolHistory) {
