@@ -12,7 +12,7 @@ function SidebarTab({ icon, title, selected, href, onClick }) {
 			<>
 				<div
 					className={`${
-						selected && "bg-accent font-semibold"
+						selected && "bg-accent !font-semibold"
 					} font-normal w-min h-min px-5 py-2 rounded-full flex items-center justify-center material-symbols-outlined text-[23px] p-0 transition-all`}
 				>
 					{icon}
