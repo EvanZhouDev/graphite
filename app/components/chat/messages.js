@@ -37,6 +37,14 @@ function GraphiteMessage({ text, tools, active }) {
 				if (toolInvocation.toolName === "giveSuggestions") {
 					return <SuggestionTools key={i} tool={tools[i]} />;
 				}
+				if (toolInvocation.toolName === "setMemoryAndGiveSuggestions") {
+					return (
+						<div key={i}>
+							<MemoryTools tool={tools[i]} active={active} />
+							<SuggestionTools tool={tools[i]} />
+						</div>
+					);
+				}
 			})}
 		</>
 	);
@@ -66,7 +74,7 @@ export default function Messages({ isLoading }) {
 						<div key={i} className="m-2 mb-5">
 							<MessageHeader
 								icon={
-									<span class="material-symbols-outlined text-xl w-7 h-7 outline outline-[#EDEDED] outline-[1px] flex items-center justify-center rounded-full p-1">
+									<span class="material-symbols-outlined w-7 h-7 outline outline-[#EDEDED] outline-[1px] flex text-center items-center justify-center rounded-full pt-[1.5px]">
 										person
 									</span>
 								}
