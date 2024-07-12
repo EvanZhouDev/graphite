@@ -139,6 +139,29 @@ export default function FileTile({ file, idx }) {
 							</button>
 							<button
 								href="#"
+								className="py-2 text-[15px] hover:bg-primary-container-hover font-medium flex items-center px-2 pr-4 w-full"
+								onClick={(e) => {
+									e.stopPropagation();
+									setStorage((storage) => {
+										return {
+											...storage,
+											currentFile: storage.currentFile,
+											files: [
+												...storage.files,
+												structuredClone(storage.files[storage.currentFile]),
+											],
+										};
+									});
+									toggleDropdown(e);
+								}}
+							>
+								<span className="material-symbols-outlined text-[20px] pr-2">
+									content_copy
+								</span>
+								Duplicate File
+							</button>
+							<button
+								href="#"
 								className="py-2 text-[15px] hover:bg-primary-container-hover font-medium flex items-center px-2 pr-4 w-full text-left rounded-b-xl"
 								onClick={(e) => {
 									e.stopPropagation();
