@@ -46,7 +46,7 @@ export function FileProvider({ children }) {
 				let newStorage = structuredClone(storage);
 				newStorage.files[storage.currentFile][attribute] =
 					typeof setFieldAction === "function"
-						? setFieldAction(file[attribute])
+						? setFieldAction(storage.files[storage.currentFile][attribute])
 						: setFieldAction;
 				return newStorage;
 			});
