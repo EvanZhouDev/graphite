@@ -264,3 +264,7 @@ body {
 .fadeIn {
 	animation: fadeIn 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
+
+.all-no-pointer * {
+	pointer-events: none;
+}
