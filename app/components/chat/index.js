@@ -198,13 +198,36 @@ export default function Chat() {
 	}
 
 	return (
-		<div className="flex flex-col justify-stretch h-full">
+		<div className="flex flex-col justify-stretch h-full relative">
 			{file?.messages.length ? (
 				<>
 					<Messages isLoading={isLoading} />
 				</>
 			) : (
 				<EmptyView setInput={setInput} />
+			)}
+			{error && (
+				<div className="absolute text-sm text-center bottom-20 w-[calc(100% - 32px)] p-2 bg-tertiary mx-4 rounded-xl border-[0.5px] border-dim mb-2 shadow-xl flex flex-col items-center">
+					<div>
+						Cannot access Gemini right now. Potential reasons may include an{" "}
+						<b>incorrect API Key</b>, bad internet, being rate limited, or
+						providing a request Gemini can&apos;t handle.
+					</div>
+					<div className="flex flex-row gap-3 mt-3">
+						<a
+							className="border-[1px] border-primary p-2 text-primary font-medium text-sm rounded-full px-3 hover:bg-surface-container active:bg-surface-container-hover transition-colors"
+							href="https://github.com/EvanZhouDev/graphite"
+						>
+							Report on GitHub
+						</a>
+						<a
+							className="bg-primary p-2 text-white dark:text-black font-medium text-sm rounded-full px-3 hover:bg-primary-hover active:bg-primary-active transition-colors"
+							href="/"
+						>
+							Reload and Try Again
+						</a>
+					</div>
+				</div>
 			)}
 			<Input
 				value={input}
@@ -231,6 +254,7 @@ export default function Chat() {
 					}
 					handleSubmit();
 				}}
+				disabled={error}
 			/>
 		</div>
 	);

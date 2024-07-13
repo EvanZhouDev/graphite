@@ -6,7 +6,7 @@ import Tags from "./tags";
 import { useContext } from "react";
 import { FileContext } from "@/providers/file";
 
-export default function Input({ onChange, value, onSubmit }) {
+export default function Input({ onChange, value, onSubmit, disabled }) {
 	let { file, setMemory } = useContext(FileContext);
 
 	const [fullMode, setFullMode] = useState(false);
@@ -71,7 +71,11 @@ export default function Input({ onChange, value, onSubmit }) {
 	}, []);
 
 	return (
-		<div className="flex justify-stretch gap-3 m-4 h-16 items-end">
+		<div
+			className={`flex justify-stretch gap-3 m-4 h-16 items-end ${
+				disabled && "grayscale pointer-events-none"
+			}`}
+		>
 			<div
 				className={`bg-primary-container flex-grow flex justify-stretch items-center z-50 flex-col relative focus-within:bg-primary-container-hover transition-colors ${
 					fullMode || lines > 1 ? "rounded-3xl" : "rounded-full"
@@ -79,12 +83,17 @@ export default function Input({ onChange, value, onSubmit }) {
 			>
 				<div className="w-full flex flex-grow">
 					<TextareaAutosize
+						disabled={disabled}
 						className={`resize-none bg-transparent focus:outline-none transparent-scrollbar grow m-5 w-full ${
 							fullMode ? "mb-0" : ""
 						}`}
 						maxRows={10}
 						rows={1}
-						placeholder="Chat with Graphite..."
+						placeholder={
+							disabled
+								? "Cannot Access Gemini Right Now"
+								: "Chat with Graphite..."
+						}
 						onChange={(e) => onChange(e.target.value)}
 						onHeightChange={(height, { rowHeight }) =>
 							setLines(height / rowHeight)
@@ -121,7 +130,9 @@ export default function Input({ onChange, value, onSubmit }) {
 							<span className="material-symbols-outlined">settings</span>
 						</button>
 						{isSettingsOpen && (
-							<div className="absolute bottom-0 right-0 mr-2 mb-16 w-[32vw] bg-surface p-5 border-[0.5px] rounded-xl shadow-xl border-dim z-50 pointer-events-auto">
+							<div
+								className={`absolute bottom-0 right-0 mr-2 mb-16 w-[32vw] bg-surface p-5 border-[0.5px] rounded-xl shadow-xl border-dim z-100 pointer-events-auto ${disabled && "all-no-pointer"}`}
+							>
 								<div>
 									<ToolLabel icon="work" label="FORMALITY" />
 									<FormalitySlider value={file.memory.formality ?? 0} />
