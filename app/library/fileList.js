@@ -32,7 +32,6 @@ export default function FileList() {
 
 			const itemsPerRow = n;
 			const totalItems = storage.files.length + 1; // +1 for the "New File" button
-			console.log(itemsPerRow, totalItems);
 			let remainder = (itemsPerRow - (totalItems % itemsPerRow)) % itemsPerRow;
 			if (remainder === itemsPerRow) remainder = 0;
 			// const invisibleCount = remainder === 0 ? 0 : itemsPerRow - remainder;

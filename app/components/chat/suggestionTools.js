@@ -158,9 +158,7 @@ function Suggestion({
 							let file = structuredClone(f);
 
 							for (let toolCall of file.toolHistory) {
-								console.log(id);
 								if (toolCall.toolCallId === id) {
-									console.log(toolCall, suggestionIdx);
 									toolCall.args.corrections[suggestionIdx].accepted = true;
 								}
 							}
@@ -209,7 +207,6 @@ const suggestionTypeMap = {
 			if (startIndex !== -1) {
 				return content.slice(0, startIndex) + text + content.slice(startIndex);
 			}
-			console.log(content);
 			return content;
 		},
 	},
