@@ -121,7 +121,7 @@ export default function EditorBody() {
 			/>
 			{previewSuggestion.type && (
 				<div
-					className="w-full h-full resize-none rounded-xl focus:outline-none p-3 px-5 absolute top-0 left-0 overflow-y-auto pointer-events-none z-50 bg-surface text-[18px] transparent-scrollbar"
+					className="w-full h-full resize-none rounded-xl focus:outline-none p-3 px-5 absolute top-0 left-0 overflow-y-auto pointer-events-none z-1 bg-surface text-[18px] transparent-scrollbar"
 					style={{
 						whiteSpace: "pre-wrap",
 						wordWrap: "break-word",
