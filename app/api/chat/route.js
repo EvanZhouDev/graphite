@@ -1,7 +1,11 @@
 import { google } from "@ai-sdk/google";
 import { convertToCoreMessages, streamText } from "ai";
 import { z } from "zod";
-import { MEMORY_TOOLCALL, SUGGESTION_TOOLCALL, MEMORY_AND_SUGGESTION_TOOLCALL } from "@/components/prompts";
+import {
+	MEMORY_TOOLCALL,
+	SUGGESTION_TOOLCALL,
+	MEMORY_AND_SUGGESTION_TOOLCALL,
+} from "@/components/prompts";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -15,7 +19,26 @@ export async function POST(req) {
 		.at(-1);
 
 	const result = await streamText({
-		model: google("models/gemini-1.5-pro-latest"),
+		model: google("models/gemini-1.5-pro-latest", {
+			safetySettings: [
+				{
+					category: "HARM_CATEGORY_HATE_SPEECH",
+					threshold: "BLOCK_NONE",
+				},
+				{
+					category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+					threshold: "BLOCK_NONE",
+				},
+				{
+					category: "HARM_CATEGORY_HARASSMENT",
+					threshold: "BLOCK_NONE",
+				},
+				{
+					category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+					threshold: "BLOCK_NONE",
+				},
+			],
+		}),
 		messages: messages.flatMap((x) => {
 			if (x.role === "system")
 				return {
