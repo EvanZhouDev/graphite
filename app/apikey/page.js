@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FileContext } from "@/providers/file";
 import ClientOnly from "@/components/clientOnly";
 import { FileProvider } from "@/providers/file";
@@ -57,6 +57,7 @@ function HelpPageTemplate({
 
 function APIKeyInterface() {
 	let { storage, setStorage } = useContext(FileContext);
+	let [showPassword, setShowPassword] = useState(false);
 	return (
 		<div className="rounded-xl bg-surface w-full h-full flex justify-stretch flex-col overflow-y-auto transparent-scrollbar items-center">
 			<HelpPageTemplate
@@ -150,7 +151,7 @@ function APIKeyInterface() {
 						key
 					</span>
 					<input
-						type="password"
+						type={showPassword ? "text" : "password"}
 						placeholder="Gemini API Key..."
 						className={`bg-transparent focus:outline-none w-[40vw] h-12 px-4 pl-2`}
 						value={storage.apiKey}
@@ -164,6 +165,12 @@ function APIKeyInterface() {
 							});
 						}}
 					/>
+					<button
+						className="material-symbols-outlined text-2xl mr-2 hover:bg-dim/20 p-1 rounded-full transition-colors"
+						onClick={() => setShowPassword((x) => !x)}
+					>
+						{showPassword ? "visibility_off" : "visibility"}
+					</button>
 				</div>
 				<div className="text-dim text-center flex items-center justify-center border-[0.5px] border-dim p-3 rounded-xl px-4 mt-5">
 					<span className="material-symbols-outlined text-xl mr-2">

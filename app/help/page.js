@@ -94,6 +94,7 @@ function HelpPageTemplate({
 
 function GettingAPIKey({ setCurIdx }) {
 	let { storage, setStorage } = useContext(FileContext);
+	let [showPassword, setShowPassword] = useState(false);
 	return (
 		<HelpPageTemplate
 			setCurIdx={setCurIdx}
@@ -187,7 +188,7 @@ function GettingAPIKey({ setCurIdx }) {
 					key
 				</span>
 				<input
-					type="password"
+					type={showPassword ? "text" : "password"}
 					placeholder="Gemini API Key..."
 					className={`bg-transparent focus:outline-none w-[40vw] h-12 px-4 pl-2`}
 					value={storage.apiKey}
@@ -201,6 +202,12 @@ function GettingAPIKey({ setCurIdx }) {
 						});
 					}}
 				/>
+				<button
+					className="material-symbols-outlined text-2xl mr-2 hover:bg-dim/20 p-1 rounded-full transition-colors"
+					onClick={() => setShowPassword((x) => !x)}
+				>
+					{showPassword ? "visibility_off" : "visibility"}
+				</button>
 			</div>
 			<div className="text-dim text-center flex items-center justify-center border-[0.5px] border-dim p-3 rounded-xl px-4 mt-5">
 				<span className="material-symbols-outlined text-xl mr-2">warning</span>
