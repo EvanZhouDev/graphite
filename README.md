@@ -1,7 +1,7 @@
 ![Graphite Banner](./assets/graphite-banner.png)
 
 <p align='center'>
-Try out Graphite today at <a href="https://graphite-editor.vercel.app">graphite-editor.vercel.app</a>!
+Try Graphite at <a href="https://graphite-editor.vercel.app">graphite-editor.vercel.app</a> | See Graphite <a href="https://www.youtube.com/watch?v=R2zYceZMa7I">in Action on YouTube</a>
 </p>
 
 ## Using Graphite
