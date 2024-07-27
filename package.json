@@ -1,33 +1,45 @@
 {
-  "name": "graphite",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@ai-sdk/google": "^0.0.24",
-    "@uidotdev/usehooks": "^2.4.1",
-    "@vercel/analytics": "^1.3.1",
-    "@vercel/speed-insights": "^1.0.12",
-    "ai": "^3.2.16",
-    "fuse.js": "^7.0.0",
-    "material-symbols": "^0.21.0",
-    "next": "14.2.4",
-    "next-themes": "^0.3.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-markdown": "^9.0.1",
-    "react-textarea-autosize": "^8.5.3",
-    "remark-gfm": "^4.0.0"
-  },
-  "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
-  }
+	"name": "graphite",
+	"version": "0.1.0",
+	"author": "EvanZhouDev",
+	"description": "The next-generation text editor, powered by AI that writes with you, not for you.",
+	"license": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/EvanZhouDev/graphite.git"
+	},
+	"homepage": "https://graphite-editor.vercel.app",
+	"keywords": [
+		"editor",
+		"ai",
+		"gemini"
+	],
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@ai-sdk/google": "^0.0.24",
+		"@uidotdev/usehooks": "^2.4.1",
+		"@vercel/analytics": "^1.3.1",
+		"@vercel/speed-insights": "^1.0.12",
+		"ai": "^3.2.16",
+		"fuse.js": "^7.0.0",
+		"material-symbols": "^0.21.0",
+		"next": "14.2.4",
+		"next-themes": "^0.3.0",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-markdown": "^9.0.1",
+		"react-textarea-autosize": "^8.5.3",
+		"remark-gfm": "^4.0.0"
+	},
+	"devDependencies": {
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.4"
+	}
 }
