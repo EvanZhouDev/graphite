@@ -9,7 +9,7 @@ export default function NotFound() {
 				</span>
 				<div className="text-3xl font-medium">Page Not Found</div>
 				<div className="text-dim text-center my-3 w-[50vw]">
-					Uh oh! The page you are looking for doesn't exist.
+					Uh oh! The page you are looking for doesn&nbsp;t exist.
 					<br />
 					Let's get you back to writing.
 				</div>
