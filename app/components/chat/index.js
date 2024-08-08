@@ -179,7 +179,7 @@ export default function Chat() {
 		return (
 			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
 				<EmptyView setInput={() => {}} />
-				<div className="mb-12 font-medium">
+				<div className="mb-5 font-medium mt-5">
 					Create a file to use Graphite Chat.
 				</div>
 			</div>
@@ -190,7 +190,7 @@ export default function Chat() {
 		return (
 			<div className="flex flex-col justify-center h-full grayscale pointer-events-none items-center">
 				<EmptyView setInput={() => {}} />
-				<div className="mb-12 font-medium">
+				<div className="mb-5 font-medium mt-5">
 					Set your API Key in the API Key tab to use Graphite Chat.
 				</div>
 			</div>
