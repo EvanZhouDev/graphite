@@ -84,7 +84,7 @@ export default function FileList() {
 					className="p-4 flex grow flex-wrap w-full gap-3 justify-center"
 				>
 					<button
-						className="w-[300px] h-[405px] bg-surface rounded-xl border-dim border-[0.5px] border-dashed flex items-center justify-center flex-col"
+						className="w-[300px] h-[405px] bg-surface rounded-xl border-dim border-[1px] border-dashed flex items-center justify-center flex-col"
 						onClick={() => {
 							setStorage((storage) => {
 								return {
