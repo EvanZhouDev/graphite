@@ -43,7 +43,7 @@ function SidebarTab({ icon, title, selected, href, onClick }) {
 export default function Sidebar() {
 	const pathname = usePathname();
 	return (
-		<div className="w-[5vw] rounded-xl flex flex-col items-center justify-between">
+		<div className="w-[5vw] max-w-[70px] rounded-xl flex flex-col items-center justify-between">
 			<div className="flex flex-col items-center" suppressHydrationWarning>
 				<Image
 					src="/graphite-black.svg"
