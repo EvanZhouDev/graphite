@@ -87,9 +87,9 @@ function Suggestion({
 					<button className="bg-dim text-white dark:text-black rounded-full py-1 px-3 flex items-center relative">
 						Invalid Suggestion
 						<div className="icon material-symbols-outlined ml-1">help</div>
-						<div className="absolute tooltip top-10 left-0 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[20vw]">
-							Graphite couldn&apos;t find the target text in your writing. Graphite
-							may have made a mistake, or your text may have changed.
+						<div className="absolute tooltip top-10 left-0 bg-tertiary p-3 rounded-xl text-black dark:text-white font-normal border-dim border-[0.5px] text-xs min-w-[20vw] z-50">
+							Graphite couldn&apos;t find the target text in your writing.
+							Graphite may have made a mistake, or your text may have changed.
 						</div>
 					</button>
 					<button
