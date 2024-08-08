@@ -11,12 +11,9 @@ import {
 export const maxDuration = 30;
 
 export async function POST(req) {
-	const { messages } = await req.json();
+	const { messages, customKey } = await req.json();
 
-	process.env.GOOGLE_GENERATIVE_AI_API_KEY = messages
-		.at(-2)
-		.content.split("\n")
-		.at(-1);
+	process.env.GOOGLE_GENERATIVE_AI_API_KEY = customKey;
 
 	const result = await streamText({
 		model: google("models/gemini-1.5-pro-latest", {
@@ -43,7 +40,7 @@ export async function POST(req) {
 			if (x.role === "system")
 				return {
 					role: "system",
-					content: x.content.split("\n").slice(0, -1).join("\n"),
+					content: x.content,
 				};
 			return convertToCoreMessages([x]);
 		}),

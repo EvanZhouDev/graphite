@@ -232,14 +232,14 @@ export default function Chat() {
 			<Input
 				value={input}
 				onChange={setInput}
-				onSubmit={() => {
+				onSubmit={(e) => {
 					// ALWAYS remove ALL system messages before sending a new message to clean up backlog
 					setMessages(messages.filter((x) => x.role != "system"));
 					if (messages.length === 0) {
 						setMessages([
 							{
 								role: "system",
-								content: CHAT_INITIAL(memory, content) + `\n${storage.apiKey}`,
+								content: CHAT_INITIAL(memory, content),
 							},
 							...messages,
 						]);
@@ -248,11 +248,15 @@ export default function Chat() {
 							...messages,
 							{
 								role: "system",
-								content: CHAT_NORMAL(memory, content) + `\n${storage.apiKey}`,
+								content: CHAT_NORMAL(memory, content),
 							},
 						]);
 					}
-					handleSubmit();
+					handleSubmit(e, {
+						body: {
+							customKey: storage.apiKey,
+						},
+					});
 				}}
 				disabled={error}
 			/>
