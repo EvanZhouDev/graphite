@@ -23,7 +23,7 @@ function Suggestion({
 	if (suggestion.dismissed) {
 		return (
 			<div
-				className={`bg-[#F2F6FC] rounded-xl flex flex-col p-3 gap-3 my-2 grayscale`}
+				className={`bg-[#F2F6FC] dark:bg-[#27292b] rounded-xl flex flex-col p-3 gap-3 my-2 grayscale`}
 			>
 				<span className="text-[#A6A6A6] font-light flex items-center justify-between">
 					<div className="flex items-center">
@@ -70,6 +70,23 @@ function Suggestion({
 		);
 	}
 
+	if (suggestion.accepted) {
+		return (
+			<div
+				className={`bg-[#F2F6FC] dark:bg-[#27292b] rounded-xl flex flex-col p-3 gap-3 my-2`}
+			>
+				<span className="text-dim font-light flex items-center">
+					<span class="material-symbols-outlined font-light mr-1">{icon}</span>
+					{title}
+					<span className="bg-primary text-white dark:text-black rounded-full  px-2 ml-2">
+						Accepted
+					</span>
+				</span>
+				<span className="text-left font-semibold">{children}</span>
+			</div>
+		);
+	}
+
 	if (!file.content.includes(suggestion.anchor)) {
 		return (
 			<div
@@ -109,21 +126,6 @@ function Suggestion({
 						Dismiss
 					</button>
 				</div>
-			</div>
-		);
-	}
-
-	if (suggestion.accepted) {
-		return (
-			<div className={`bg-[#F2F6FC] rounded-xl flex flex-col p-3 gap-3 my-2`}>
-				<span className="text-[#A6A6A6] font-light flex items-center">
-					<span class="material-symbols-outlined font-light mr-1">{icon}</span>
-					{title}
-					<span className="bg-[#1C73E8] text-white rounded-full  px-2 ml-2">
-						Accepted
-					</span>
-				</span>
-				<span className="text-left font-semibold">{children}</span>
 			</div>
 		);
 	}
