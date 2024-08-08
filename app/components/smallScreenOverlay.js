@@ -20,7 +20,7 @@ export default function SmallScreenOverlay() {
 				</span>
 				<div className="text-3xl font-medium">Screen Too Small</div>
 				<div className="text-dim text-center my-3 w-[50vw]">
-					Graphite's AI writing interface is meant to be used on a laptop-sized
+					Graphite&nbsp;s AI writing interface is meant to be used on a laptop-sized
 					screen or larger. It is not yet optimized for{" "}
 					<i>mobile or tablet devices</i>.
 				</div>
