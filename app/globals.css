@@ -235,7 +235,7 @@ body {
 
 .scroll-fadeout-no-scrollbar {
 	-webkit-mask: linear-gradient(to bottom, transparent, #000) 0 100% /
-			calc(100% - 42px) 42px,
+			calc(100% - 20px) 20px,
 		linear-gradient(#000 0 0);
 	-webkit-mask-composite: destination-out;
 	mask-composite: exclude;
@@ -267,4 +267,12 @@ body {
 
 .all-no-pointer * {
 	pointer-events: none;
+}
+
+pre {
+	white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+	white-space: -pre-wrap; /* Opera */
+	white-space: -o-pre-wrap; /* Opera */
+	white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+	word-wrap: break-word; /* IE 5.5+ */
 }
