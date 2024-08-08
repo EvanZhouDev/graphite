@@ -239,7 +239,7 @@ export default function Chat() {
 						setMessages([
 							{
 								role: "system",
-								content: CHAT_INITIAL(memory, content),
+								content: CHAT_INITIAL(memory, content, new Date()),
 							},
 							...messages,
 						]);
@@ -248,7 +248,7 @@ export default function Chat() {
 							...messages,
 							{
 								role: "system",
-								content: CHAT_NORMAL(memory, content),
+								content: CHAT_NORMAL(memory, content, new Date()),
 							},
 						]);
 					}

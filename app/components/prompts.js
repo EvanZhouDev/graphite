@@ -1,3 +1,34 @@
+const formatDate = (date) => {
+	const daysOfWeek = [
+		"SUNDAY",
+		"MONDAY",
+		"TUESDAY",
+		"WEDNESDAY",
+		"THURSDAY",
+		"FRIDAY",
+		"SATURDAY",
+	];
+	const months = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+	const dayOfWeek = daysOfWeek[date.getDay()];
+	const month = months[date.getMonth()];
+	const day = date.getDate();
+	const year = date.getFullYear();
+	return `${dayOfWeek}, ${month} ${day}, ${year}`;
+};
+
 export const MEMORY_TOOLCALL = () =>
 	`When the writer introduces NEW INFO about WHAT they're WRITING, you MUST SET the formality, summary, audience, and intents of the text in your memory with the setMemory toolcall.`;
 
@@ -30,9 +61,12 @@ If the user requests a TEMPLATE, NEVER use details that you were not given in TE
 
 export const CHAT_INITIAL = (
 	memory,
-	mainText
+	mainText,
+	date
 ) => `You are a WRITING INSTRUCTOR, working WITH a writer on a piece of text.
 You are SUPPORTIVE and HELPFUL and CONCISE and CLEAR.
+
+Today's date is ${formatDate(date)}.
 
 ${
 	(memory.formality != 0 ||
@@ -53,7 +87,7 @@ ${
 ${mainText}
 \`\`\`
 `
-		: "The writer currently has no text written."
+		: "The writer currently has NO TEXT written."
 }
 
 The writer will now tell you what the text they are working on is ABOUT.
@@ -62,9 +96,12 @@ Based on this information, you MUST REPLY to the writer, Then you MUST USE the s
 
 export const CHAT_NORMAL = (
 	memory,
-	mainText
+	mainText,
+	date
 ) => `You are a WRITING INSTRUCTOR, working WITH a writer on a piece of text.
 You are SUPPORTIVE and HELPFUL and CONCISE and CLEAR.
+
+Today's date is ${formatDate(date)}.
 
 Here is an overview of what you should know about the writer's text:
 ${memory.formality && `Formality: ${memory.formality} (In a range of 1-5)`}
@@ -78,7 +115,7 @@ ${
 ${mainText}
 \`\`\`
 `
-		: "The writer currently has no text written."
+		: "The writer currently has NO TEXT written. Even if you have given suggestions, the writer HAS NOT ACCEPTED THEM. YOU MAY ONLY run giveSuggestions the add_after command and a BLANK ANCHOR."
 }
 
 This knowledge OVERRIDES ALL PREVIOUS KNOWLEDGE YOU MAY HAVE because the writer may have changed the attributes.
