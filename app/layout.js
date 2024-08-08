@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 				<SpeedInsights />
 				<OnboardingRouter />
 				<ThemeProvider>
-					<div className="bg-surface-container flex w-screen h-screen gap-3 p-3">
+					<div className="bg-surface-container flex w-screen h-screen gap-3 p-3 overflow-hidden">
 						<Sidebar />
 						{children}
 					</div>

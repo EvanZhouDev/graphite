@@ -1,40 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function SmallScreenOverlay() {
 	const isSmallDevice = useMediaQuery("only screen and (max-width: 1025px)");
 	const [isVisible, setIsVisible] = useState(true);
-
-	useEffect(() => {
-		if (isVisible) {
-			const preventDefault = (e) => e.preventDefault();
-
-			window.addEventListener("wheel", preventDefault, { passive: false });
-			window.addEventListener("touchmove", preventDefault, { passive: false });
-			window.addEventListener(
-				"keydown",
-				(e) => {
-					if (
-						["ArrowUp", "ArrowDown", " ", "PageUp", "PageDown"].includes(e.key)
-					) {
-						preventDefault(e);
-					}
-				},
-				{ passive: false }
-			);
-
-			window.scrollTo(0, 0); // Scroll to top-left corner
-			document.body.style.zoom = "100%"; // Set zoom level to 100%
-
-			return () => {
-				window.removeEventListener("wheel", preventDefault);
-				window.removeEventListener("touchmove", preventDefault);
-				window.removeEventListener("keydown", preventDefault);
-				document.body.style.zoom = ""; // Reset zoom level
-			};
-		}
-	}, [isVisible]);
 
 	if (!isVisible) return null;
 

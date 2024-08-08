@@ -16,7 +16,7 @@ function SuggestionCard({ text, icon, onClick }) {
 
 export default function EmptyView({ setInput }) {
 	return (
-		<div className="grow flex flex-col items-center justify-stretch w-full gap-4 px-4 pt-4">
+		<div className="grow flex flex-col items-center justify-stretch w-full gap-4 px-4 pt-4 overflow-hidden">
 			<div className="grow flex flex-col items-center justify-center gap-4">
 				<Image
 					src="/graphite.png"
