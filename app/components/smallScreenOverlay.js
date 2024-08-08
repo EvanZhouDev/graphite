@@ -24,10 +24,14 @@ export default function SmallScreenOverlay() {
 				{ passive: false }
 			);
 
+			window.scrollTo(0, 0); // Scroll to top-left corner
+			document.body.style.zoom = "100%"; // Set zoom level to 100%
+
 			return () => {
 				window.removeEventListener("wheel", preventDefault);
 				window.removeEventListener("touchmove", preventDefault);
 				window.removeEventListener("keydown", preventDefault);
+				document.body.style.zoom = ""; // Reset zoom level
 			};
 		}
 	}, [isVisible]);
@@ -36,7 +40,7 @@ export default function SmallScreenOverlay() {
 
 	return (
 		<div
-			className={`absolute top-0 left-0 bottom-0 right-0 z-50 bg-surface overflow-hidden ${
+			className={`absolute top-0 left-0 bottom-0 right-0 z-50 bg-surface ${
 				isSmallDevice ? "visible" : "invisible"
 			}`}
 		>
@@ -45,7 +49,7 @@ export default function SmallScreenOverlay() {
 					open_in_full
 				</span>
 				<div className="text-3xl font-medium">Screen Too Small</div>
-				<div className="text-dim text-center my-3 w-[50vw] min-w-[400px]">
+				<div className="text-dim text-center my-3 w-[50vw] min-w-[350px]">
 					Graphite&apos;s AI writing interface is meant to be used on a
 					laptop-sized screen or larger. It is not yet optimized for{" "}
 					<i>mobile or tablet devices</i>.
