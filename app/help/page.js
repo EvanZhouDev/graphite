@@ -20,10 +20,6 @@ function Tab({ title, curIdx, idx, onClick }) {
 	);
 }
 
-function WhatsGraphite() {
-	return <div>hi</div>;
-}
-
 function StepCard({ text, icon, title }) {
 	return (
 		<div className="bg-secondary-container h-auto w-[13vw] p-4 flex flex-col items-end rounded-xl basis-[calc(50%-4px)] suggestion-card pb-6">
