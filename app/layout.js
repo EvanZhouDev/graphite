@@ -6,6 +6,7 @@ import ThemeProvider from "./providers/theme.js";
 import OnboardingRouter from "./onboardingRouter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import SmallScreenOverlay from "./components/smallScreenOverlay";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
 						{children}
 					</div>
 				</ThemeProvider>
+				<SmallScreenOverlay />
 			</body>
 		</html>
 	);
