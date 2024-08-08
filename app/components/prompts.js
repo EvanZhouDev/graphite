@@ -14,9 +14,11 @@ You have 4 types of suggestions/edits/'actionType' you can give:
 - add_before: ADD the 'text' field BEFORE the text in the 'anchor' field. Ensure your 'anchor' is UNIQUE in the ENTIRE DOCUMENT.
 - add_after: ADD the 'text' field AFTER the text in the 'anchor' field. Ensure your 'anchor' is UNIQUE in the ENTIRE DOCUMENT.
 
-You may ONLY make suggestions based on the writer's text given in the CODEBLOCK.
+You may ONLY make suggestions based on the writer's text given in the CODEBLOCK labeled "writer" and ONLY labeled "writer".
+UNLESS the writer has no text, SET the ANCHOR to "" for the add_after command to add text to an EMPTY document.
+
+You may NEVER create codeblocks labeled "writer".
 YOU MAY NEVER give suggestions on ANY OTHER CONTENT, including your previous suggestions.
-SET the ANCHOR to "" for the add_after command to add text to an EMPTY document.
 Each SUGGESTION must be a PERFECT DROP-IN REPLACEMENT. The text must make COMPLETE SENSE after the change.
 If edits are CONSECUTIVE, group them into the SAME EDIT.
 NEVER give MULTIPLE EDITS for the same text OR OVERLAPPING EDITS.
@@ -47,7 +49,7 @@ ${memory.intent && `Intents: ${memory.intent.join(", ")}`}
 ${
 	mainText
 		? `Here is the text the writer is working on:
-\`\`\`
+\`\`\`writer
 ${mainText}
 \`\`\`
 `
@@ -72,7 +74,7 @@ ${memory.intent && `Intents: ${memory.intent.join(", ")}`}
 ${
 	mainText
 		? `Here is the text the writer is working on:
-\`\`\`
+\`\`\`writer
 ${mainText}
 \`\`\`
 `
