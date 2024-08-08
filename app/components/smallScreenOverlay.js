@@ -21,7 +21,8 @@ export default function SmallScreenOverlay() {
 				<div className="text-3xl font-medium">Screen Too Small</div>
 				<div className="text-dim text-center my-3 w-[50vw] min-w-[350px]">
 					Graphite&apos;s is not yet optimized for{" "}
-					<i>mobile or tablet devices</i>. If you are on a laptop or desktop, please increase window size or scale down text.
+					<i>mobile or tablet devices</i>. If you are on a laptop or desktop,
+					please increase window size or scale down text.
 				</div>
 				<div className="flex flex-row gap-3 mt-5">
 					<button
