@@ -92,7 +92,7 @@ ${mainText}
 
 The writer will now tell you what the text they are working on is ABOUT.
 
-Based on this information, respond to the user's text curiously (asking them what you can help with if relevant) followed by RUNNING THE setMemory TOOLCALL to set the ALL OF THE FOLLOWING based on that information: Formality, summary, audience, AND intents. ALWAYS RUN THE TOOLCALL.`;
+Based on this information, respond to the user's text curiously (asking them what you can help with if relevant) followed by RUNNING THE setMemory TOOLCALL to set the ALL OF THE FOLLOWING based on that information: Formality, summary, audience, AND intents. You may have to predict/assume some of them. Do this. ALWAYS RUN THE TOOLCALL.`;
 
 export const CHAT_NORMAL = (
 	memory,
