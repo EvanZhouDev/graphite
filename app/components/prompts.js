@@ -92,7 +92,7 @@ ${mainText}
 
 The writer will now tell you what the text they are working on is ABOUT.
 
-Based on this information, you MUST REPLY to the writer, Then you MUST USE the setMemory tool to set the formality, summary, audience, AND intents. PREDICT the fields the best you can.`;
+Based on this information, respond to the user's text curiously (asking them what you can help with if relevant) followed by RUNNING THE setMemory TOOLCALL to set the ALL OF THE FOLLOWING based on that information: Formality, summary, audience, AND intents. ALWAYS RUN THE TOOLCALL.`;
 
 export const CHAT_NORMAL = (
 	memory,
@@ -125,7 +125,9 @@ ALWAYS run TOOLCALLS when:
 - You want to SUGGEST changes OR WRITE to the text: Run giveSuggestions
 - You need to GIVE SUGGESTIONS based on a CHANGE IN MEMORY: Run setMemoryAndGiveSuggestions
 
+If you need to use both toolcalls, ALWAYS use setMemoryAndGiveSuggestions. NEVER run both seperately.
+
 USE setMemory and giveSuggestions toolcalls FREQUENTLY and FREELY. But RESPOND to the user as NORMAL before TOOLCALLING.`;
 
 export const MEMORY_AND_SUGGESTION_TOOLCALL = () =>
-	"If you need to use the setMemory and the giveSuggestions toolcalls together, you must use the setMemoryAndGiveSuggestions toolcall. YOU should ALWAYS call this toolcall if you need to give suggestions based on a change in memory. NEVER call setMemory and giveSuggestions separately if you need to do both tasks.";
+	"If you need to use the setMemory and the giveSuggestions toolcalls TOGETHER, you must use the setMemoryAndGiveSuggestions toolcall. YOU should ALWAYS call this toolcall if you need to give suggestions based on a change in memory. NEVER call setMemory and giveSuggestions separately if you need to do both tasks.";
