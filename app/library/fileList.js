@@ -31,7 +31,9 @@ export default function FileList() {
 			}
 
 			const itemsPerRow = n;
-			const totalItems = storage.files.length + 1; // +1 for the "New File" button
+			const resultItems = fuse.search(search).length;
+			const totalItems =
+				(resultItems === 0 ? storage.files.length : resultItems) + 1; // +1 for the "New File" button
 			let remainder = (itemsPerRow - (totalItems % itemsPerRow)) % itemsPerRow;
 			if (remainder === itemsPerRow) remainder = 0;
 			// const invisibleCount = remainder === 0 ? 0 : itemsPerRow - remainder;
