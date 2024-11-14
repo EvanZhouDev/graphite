@@ -16,7 +16,7 @@ export async function POST(req) {
 	process.env.GOOGLE_GENERATIVE_AI_API_KEY = customKey;
 
 	const result = await streamText({
-		model: google("models/gemini-1.5-pro-latest", {
+		model: google("models/gemini-1.5-pro-001", {
 			safetySettings: [
 				{
 					category: "HARM_CATEGORY_HATE_SPEECH",
