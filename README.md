@@ -12,7 +12,7 @@ If you need Help with a specific section, go to the Help tab on the left (or [cl
 
 ## Techstack
 
-[![My Skills](https://skillicons.dev/icons?i=react,nextjs,tailwind,bun,vercel)](https://skillicons.dev)
+[![Techstack](https://skillicons.dev/icons?i=react,nextjs,tailwind,bun,vercel)](https://skillicons.dev)
 
 Graphite is built from the ground up with a cutting-edge techstack, optimized for maintainability and speed.
 
