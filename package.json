@@ -1,45 +1,45 @@
 {
-	"name": "graphite",
-	"version": "0.1.0",
-	"author": "EvanZhouDev",
-	"description": "The next-generation text editor, powered by AI that writes with you, not for you.",
-	"license": "GPL-3.0",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/EvanZhouDev/graphite.git"
-	},
-	"homepage": "https://graphite-editor.vercel.app",
-	"keywords": [
-		"editor",
-		"ai",
-		"gemini"
-	],
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@ai-sdk/google": "^0.0.24",
-		"@uidotdev/usehooks": "^2.4.1",
-		"@vercel/analytics": "^1.4.0",
-		"@vercel/speed-insights": "^1.1.0",
-		"ai": "3.2.21",
-		"fuse.js": "^7.0.0",
-		"material-symbols": "^0.21.3",
-		"next": "14.2.4",
-		"next-themes": "^0.3.0",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-markdown": "^9.0.1",
-		"react-textarea-autosize": "^8.5.5",
-		"remark-gfm": "^4.0.0"
-	},
-	"devDependencies": {
-		"postcss": "^8.4.49",
-		"tailwindcss": "^3.4.15",
-		"eslint": "^8.57.1",
-		"eslint-config-next": "14.2.4"
-	}
+  "name": "graphite",
+  "version": "0.1.0",
+  "author": "EvanZhouDev",
+  "description": "The next-generation text editor, powered by AI that writes with you, not for you.",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvanZhouDev/graphite.git"
+  },
+  "homepage": "https://graphite-editor.vercel.app",
+  "keywords": [
+    "editor",
+    "ai",
+    "gemini"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^0.0.24",
+    "@uidotdev/usehooks": "^2.4.1",
+    "@vercel/analytics": "^1.4.0",
+    "@vercel/speed-insights": "^1.1.0",
+    "ai": "3.2.21",
+    "fuse.js": "^7.0.0",
+    "material-symbols": "^0.21.3",
+    "next": "14.2.35",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-textarea-autosize": "^8.5.5",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.4"
+  }
 }
